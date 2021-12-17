@@ -13,7 +13,8 @@ const getApiInfo = async()=>{
                 name: el.name, 
                 height: el.height.metric, 
                 weight: el.weight.metric, 
-                life_span: el.life_span
+                life_span: el.life_span,
+                image: el.image.url
             }
         })
 
@@ -23,7 +24,7 @@ const getApiInfo = async()=>{
 const getDbInfo = async() =>{
     return await Dog.findAll({
         include: {
-            //incluyo el modelo ocupacion con los atributos que necesito 
+            //incluyo el modelo Temperament con los atributos que necesito 
             model: Temperament,
             attributes: ['name'],
             through: {
@@ -76,13 +77,14 @@ router.get('/temperament', async(req,res,next)=>{
     })
 
 router.post('/dog', async(req,res,next)=>{
-    const { name, height, weight,life_span, temperaments } = req.body 
+    const { name, height, weight,life_span, image, temperaments } = req.body 
 
 let dogCreated = await Dog.create({
     name,
     height,
     weight,
-    life_span
+    life_span, 
+    image
 })
 
 
