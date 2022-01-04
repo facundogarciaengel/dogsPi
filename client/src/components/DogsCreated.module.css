@@ -1,0 +1,124 @@
+@import url('https://fonts.googleapis.com/css2?family=Yanone+Kaffeesatz:wght@500&display=swap');
+
+.contPpal {
+    padding-top: 7vh;
+    background-color: rgba(255, 237, 133, 0.747);
+    width: 100vw;
+    height: fit-content;
+    padding-bottom: 10vh;
+}
+
+
+
+.form {
+    width: 60%;
+    margin: 0 auto;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.caja {
+    margin: auto;
+    width: 70vw;
+    max-width: 750px;
+    height: fit-content;
+    background-color: rgb(235, 229, 229);
+    display: flex;
+    flex-direction: row;
+    /* border-bottom: 10px solid black; */
+    border-radius: 10px;
+    -webkit-box-shadow: inset -1px 3px 8px 5px #1f88ff00, 2px 5px 16px 0px #0B325E, 5px 5px 15px 5px rgba(0, 0, 0, 0);
+    box-shadow: inset -1px 3px 8px 5px #1f88ff00, 2px 5px 16px 0px #0B325E, 5px 5px 15px 5px rgba(0, 0, 0, 0);
+}
+
+.alturas {
+    display: flex;
+    flex-direction: row;
+    width: 50%;
+}
+
+.pesos {
+    display: flex;
+    flex-direction: row;
+    width: 50%;
+    /* overflow-x: hidden; */
+}
+.life_span {
+    display: flex;
+    flex-direction: row;
+    width: auto;
+}
+
+.nombre {
+    display: flex;
+    flex-direction: row;
+    width: 50%;
+}
+
+.image {
+    display: flex;
+    flex-direction: row;
+    width: 50%;
+}
+
+
+ .button {
+    border: none;
+    cursor: pointer;
+    width: 80px;
+    height: 30px;
+    color: #fff;
+    background-color: #733ca9;
+    /* margin: 30px auto 20px auto; */
+    border-radius: 10px;
+    align-items: center;
+    padding: 3px;
+    display: flex;
+    justify-content: space-around;
+    font-weight: 500;
+    margin-bottom: 1px;
+}
+
+.divVolver {
+    
+    
+        padding-top: 7vh;
+        background-color: rgba(255, 237, 133, 0.747);
+        width: 100vw;
+        height: fit-content;
+        padding-bottom: 20vh;
+    
+       
+    }
+    
+.botonVolver {
+    /* background-color: #0B325E; */
+    display:flex;
+    width: 100%;
+    height:max-content;
+    flex-direction:row;
+    align-items:center;
+    justify-content:space-around;
+    margin-left: 4rem;
+}
+
+.botonX {
+
+    border-radius: 4px; 
+    height: 14px;
+    width: 14px;
+    border-color: black;
+    justify-content: center;
+    display: flex;
+    color: blueviolet;
+    font-size: xx-small;
+
+}
+
+.divTemp {
+    font-size: xx-small; 
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    
+}

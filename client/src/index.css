@@ -1,5 +1,7 @@
 body {
-  background: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTFF8CUYSrtDSjETP-PS90QUR-_LAFOOfKnig&usqp=CAU");
+  background: #fdfeb9;
+  /* background: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTFF8CUYSrtDSjETP-PS90QUR-_LAFOOfKnig&usqp=CAU");
+  margin: 0; */
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',

@@ -1,0 +1,44 @@
+.divHome {
+    background: #fdfeb9;
+}
+
+.a {   
+        margin-right: 20px;
+        margin-left: 20px;
+        display: block;
+        padding: 10px 20px;
+        color: white ;
+        font-size: 30px;
+        background: #b63aff;
+        text-decoration: none;
+        border-radius: 5px;
+        font-family: Tahoma;
+        -webkit-box-shadow: inset -1px 3px 8px 5px #1f88ff00, 2px 5px 16px 0px #0B325E, 5px 5px 15px 5px rgba(0, 0, 0, 0);
+    box-shadow: inset -1px 3px 8px 5px #1f88ff00, 2px 5px 16px 0px #0B325E, 5px 5px 15px 5px rgba(0, 0, 0, 0);
+
+       }
+       
+       .a:hover {
+         background: #deecf0ec;
+       } 
+
+
+.h1 {
+        position:relative;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        max-lines: 1;
+        color: #b63aff;
+    
+    
+}
+
+.cartas {
+
+    border-radius: 20%;
+}
+
+.no_dec {
+    text-decoration: none;
+  }

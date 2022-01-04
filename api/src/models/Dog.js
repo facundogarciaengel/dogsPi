@@ -1,7 +1,7 @@
 const {DataTypes} = require('sequelize')
 
 module.exports = (sequelize) => {
-    sequelize.define("dog", {
+    sequelize.define("Dog", {
 
         id: {
             type: DataTypes.UUID, 
@@ -27,6 +27,12 @@ module.exports = (sequelize) => {
         }, 
         image : {
             type: DataTypes.STRING, 
+            // defaultValue: 'https://post.medicalnewstoday.com/wp-content/uploads/sites/3/2020/02/322868_1100-800x825.jpg'
+        },
+        createdInDb : {
+            type: DataTypes.BOOLEAN, 
+            allowNull: false,
+            defaultValue: true
         }
     });
 };

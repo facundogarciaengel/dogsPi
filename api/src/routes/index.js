@@ -14,7 +14,8 @@ const getApiInfo = async()=>{
                 height: el.height.metric, 
                 weight: el.weight.metric, 
                 life_span: el.life_span,
-                image: el.image.url
+                image: el.image.url,
+                temperament: el.temperament
             }
         })
 
@@ -59,32 +60,56 @@ router.get('/dogs', async(req,res,next)=>{
 // falta tambien guardarlos en la base de datos 
 // pensar que si los guardo ahi puedo filtrarlos con el metodo de sqlize
 
-router.get('/temperament', async(req,res,next)=>{
-    let temperamentsApi = await axios.get('https://api.thedogapi.com/v1/breeds')
-    let temperaments = temperamentsApi.data.map(el => el.temperament)
-     //console.log(temperaments); 
-     const tempEach = temperaments.map(el => {
-        // for (let i = 0; i < el.length; i++) 
-        return el
-    })
-    tempEach.forEach(el => {
-        Temperament.findOrCreate({ where: { name: el } }) // las guardo en la base de datos 
-    })
-    const allTemperaments = await Temperament.findAll();  // las traigo de la base de datos 
-   // console.log(allTemperaments)
-    res.send(allTemperaments) // 
-    
-    })
+// router.get('/temperament', async(req,res,next)=>{
+//     let temperamentsApi = await axios.get('https://api.thedogapi.com/v1/breeds')
+//     let temperaments = temperamentsApi.data.map(el => el.temperament)
+//      //console.log(temperaments); 
+//      const tempEach = temperaments.map(el => {
+//         // for (let i = 0; i < el.length; i++) 
+//         return el
+//     })
+//     tempEach.forEach(el => {
+//         Temperament.findOrCreate({ where: { name: el } }) // las guardo en la base de datos 
+//     })
+//     const allTemperaments = await Temperament.findAll();  // las traigo de la base de datos 
+//    // console.log(allTemperaments)
+//     res.send(allTemperaments) // 
+//     })
+router.get('/temperament', async(req, res) => {
+    try {
+        const temperamentApi = await axios.get('https://api.thedogapi.com/v1/breeds');
+        //console.log(temperamentApi.data.temperament); //todo los temperamentos crudos
+        let temperament = temperamentApi.data.map(d => d.temperament ? d.temperament : "no se tiene temperamento");
+       //console.log(temperament); 
+        let temp2 = temperament.map(d => d.split(', '))
+        //console.log(temp2); 
+let settemp = new Set (temp2.flat()) // el set quita los repetidos y el flat los saca del array
+    console.log(settemp);         
+for (el of settemp) {if (el) await Temperament.findOrCreate({
+            where: { name: el }})
+      }
+ temperamentoBd = await Temperament.findAll();
+        res.status(200).json(temperamentoBd);
+    } catch (error) {
+        res.status(404).send('No se tiene respuesta a su solicitud' + error)
+    }
+   
+  })
 
 router.post('/dog', async(req,res,next)=>{
-    const { name, height, weight,life_span, image, temperaments } = req.body 
+    const { name, height, weight, life_span,image, createdInDb, temperament } = req.body 
+
+    
+      //const image2 = 'https://www.petdarling.com/wp-content/uploads/2020/11/razas-de-perros.jpg';
+    
 
 let dogCreated = await Dog.create({
     name,
     height,
     weight,
+    image,
     life_span, 
-    image
+    createdInDb
 })
 
 
@@ -92,12 +117,13 @@ let dogCreated = await Dog.create({
 //     where: { name : temperaments }
 // });
 let temperamentDb = await Temperament.findAll({
-    where: { name : temperaments }
+    where: { name : temperament }
 }); 
+console.log(temperamentDb); 
 
 dogCreated.addTemperament(temperamentDb)  
-console.log(temperamentDb); 
-console.log("Todo el perro creado es :", dogCreated.dataValues); 
+console.log(await temperamentDb); 
+//console.log("Todo el perro creado es :", dogCreated); 
 res.send("Perro creado con exito"); 
 
 // if (temperaments.length) {

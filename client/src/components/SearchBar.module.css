@@ -1,0 +1,8 @@
+
+.divBuscador {
+    width: 100%;
+    height: 35px;
+    padding: 3px 0 3px 0;
+    display: flex;
+    justify-content: flex-end;
+}
