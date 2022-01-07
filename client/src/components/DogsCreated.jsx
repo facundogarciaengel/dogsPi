@@ -10,16 +10,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import styles from './DogsCreated.module.css'
 
-// var validateFunc = function validate(input){
-//     let errors = {}
-//     if(!input.name){
-//         errors.name = "Se requiere un Nombre de raza"
-//     } 
-//     else if(!input.weight){
-//         errors.name = "Se requiere un peso"
-//     }
-//     return errors; 
-// }
+
 
 export default function DogsCreated() {
 
@@ -35,23 +26,16 @@ export default function DogsCreated() {
         life_span: "",
         image: "", 
         temperament: []
-    })
-    console.log(input.image); 
+    }) 
+console.log(input.temperament);
 
-    const [errors, setErrors] = useState({})
-
-    
     function handleChange(e) {
 
         setInput({
             ...input,
             [e.target.name] : e.target.value
         })
-        // setErrors(validateFunc(input)({
-        //     ...input,
-        //     [e.target.name] : e.target.value
-        // }))
-        console.log(input)
+        
 
     }
 
@@ -64,13 +48,12 @@ export default function DogsCreated() {
         console.log("este es el input de la img:", input);
     }
 
-   
 
 
     function handleSubmit(e){
         e.preventDefault();
-        if(!input.name || !input.height || !input.weight || !input.life_span) {alert("Campo Obligatorio")}
-       
+        if(!input.name || !input.height|| !input.weight || !input.life_span) {alert("Nombre Obligatorio")} 
+    
         else{
             dispatch(postDog(input))
             alert("Perro creado!")
@@ -98,7 +81,7 @@ export default function DogsCreated() {
 
     useEffect(() => {
         dispatch(getTemps());
-    }, [])
+    }, [dispatch])
 
     
 

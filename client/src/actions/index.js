@@ -7,6 +7,8 @@ export const ORDER_BY_WEIGHT = "ORDER_BY_WEIGHT";
 export const GET_NAME_DOG = "GET_NAME_DOG"; 
 export const POST_DOG = "POST_DOG"; 
 export const GET_DETAILS = "GET_DETAILS"; 
+export const FILTER_TEMPERAMENT = "FILTER_TEMPERAMENT"; 
+ 
  
 export function getDogs(){
 
@@ -33,6 +35,16 @@ export function getDogs(){
         }
     }
 
+    export function filterTemps(input){
+        console.log(input); 
+        return async function(dispatch){
+            return dispatch({
+                type: FILTER_TEMPERAMENT,
+                payload: input
+            })
+        }
+    }
+
     export function postDog(payload){
         console.log('desde action: ', payload)
         return async function(dispatch){
@@ -47,6 +59,7 @@ export function getDogs(){
             payload
         }
     }
+    
 export function orderByName(payload) {
     return {
         type: ORDER_BY_NAME,

@@ -1,5 +1,5 @@
 //import { getDogs, getTemps, filterCreated, orderByName, getNameDog, postDog, getDetail } from "../actions";
-import { GET_DOGS, GET_TEMPS, FILTER_CREATED, ORDER_BY_NAME, GET_NAME_DOG , POST_DOG, GET_DETAILS, ORDER_BY_WEIGHT} from '../actions/index.js'
+import { GET_DOGS, GET_TEMPS, FILTER_CREATED, ORDER_BY_NAME, GET_NAME_DOG , POST_DOG, GET_DETAILS, ORDER_BY_WEIGHT, FILTER_TEMPERAMENT} from '../actions/index.js'
 
 const initialState = {
     dogs: [],
@@ -34,6 +34,8 @@ function rootReducer(state = initialState, action) {
                 ...state,
                 dogs: action.payload === 'All' ? state.allDogs : createdFilter
             }
+
+                
 
         case ORDER_BY_NAME:
 
@@ -74,6 +76,16 @@ function rootReducer(state = initialState, action) {
                     detail: action.payload
                 }
 
+                case FILTER_TEMPERAMENT: 
+               
+                            //console.log("Hola estoy en el filtro de Temperamento", filtradosTemp);
+                            
+                           return {          
+                              
+                                ...state, 
+                                dogs: state.allDogs.filter(dog => dog.temperament?.includes(action.payload))
+                         }
+
                 case ORDER_BY_WEIGHT: 
                 
                let orderWeight = action.payload === "weight_min"? 
@@ -111,7 +123,7 @@ function rootReducer(state = initialState, action) {
                       ...state, 
                       dogs: orderWeight
                   }
-
+                  
 
             // case ORDER_BY_WEIGHT: 
             // console.log(state.dogs[0].split(',')[0]); 

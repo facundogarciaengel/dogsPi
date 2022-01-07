@@ -14,7 +14,7 @@ export default function Paginado({dogsPerPage, allDogs, paginado}){
         <nav>
             <ul className={styles.paginado}> 
                 {pageNumbers && pageNumbers.map(number =>(
-                    <li className={styles.number} key={number}>
+                    <li className={styles.number} key={number.toString()}>
                     <a className={styles.a} href="#/" onClick={()=>paginado(number)}>{number}</a>
                     </li>
      ) )}

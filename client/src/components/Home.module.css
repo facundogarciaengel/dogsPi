@@ -5,7 +5,7 @@
 .a {   
         margin-right: 20px;
         margin-left: 20px;
-        display: block;
+        display: block; 
         padding: 10px 20px;
         color: white ;
         font-size: 30px;
@@ -41,4 +41,12 @@
 
 .no_dec {
     text-decoration: none;
+  }
+
+  .contGrid {
+    display: grid; 
+    grid-template-columns: 50% 50%; 
+    justify-items: center;
+    align-items: center;
+    row-gap: 20px;
   }
